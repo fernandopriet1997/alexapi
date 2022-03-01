@@ -1,15 +1,10 @@
 const express = require('express')
-const Alexa = require('ask-sdk-core')
-const { ExpressAdapter } = require('ask-sdk-express-adapter')
-const { createSkill } = require('../src/skillHandler')
-const alexaApp = express()
+const route = express()
 
+route.get('/', function(req, res, next) {
+    res.sendFile('./../front/dist/index.html')
+});
 
-
-const adapter = new ExpressAdapter(skill, false, false)
-
-alexaApp.post('/', adapter.getRequestHandlers())
-
-module.exports = alexaApp
+module.exports = route
 
 
